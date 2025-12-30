@@ -12,6 +12,11 @@ def realizar_operacion(tipo):
             resultado = val1 + val2
         elif tipo == "restar":
             resultado = val1 - val2
+        elif tipo == "dividir":
+            if val2 != 0 :
+                resultado = val1 / val2
+            else:
+                resultado = "El segundo numero no puede ser 0"
             
         # Actualizar la etiqueta de resultado
         lbl_resultado.config(text=f"Resultado: {resultado}")
@@ -41,6 +46,7 @@ tk.Label(frame_central, text="Número 2:").pack(pady=5)
 entry_num2 = tk.Entry(frame_central, justify='center')
 entry_num2.pack(pady=5)
 
+
 # Botones
 # Usamos un frame adicional para poner los botones uno al lado del otro
 frame_botones = tk.Frame(frame_central)
@@ -50,9 +56,13 @@ btn_sumar = tk.Button(frame_botones, text="Sumar", width=10,
                       command=lambda: realizar_operacion("sumar"))
 btn_sumar.pack(side=tk.LEFT, padx=10)
 
-btn_restar = tk.Button(frame_botones, text="Restar", width=10, 
+btn_restar = tk.Button(frame_botones, text="restar", width=10, 
                        command=lambda: realizar_operacion("restar"))
 btn_restar.pack(side=tk.LEFT, padx=10)
+
+btn_dividir = tk.Button(frame_botones, text="dividir", width=10, 
+                       command=lambda: realizar_operacion("dividir"))
+btn_dividir.pack(side=tk.LEFT, padx=10)
 
 # Etiqueta para mostrar el resultado
 lbl_resultado = tk.Label(frame_central, text="Resultado: ", font=("Arial", 12, "bold"))
